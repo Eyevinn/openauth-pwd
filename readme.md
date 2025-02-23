@@ -1,41 +1,42 @@
 <h1 align="center">
-  Project Name or Logo
+  OpenAuth Password Service
 </h1>
 
 <div align="center">
-  project name - quick salespitch why this is awesome. 
-  <br />
-  <br />
-  :book: <b><a href="https://eyevinn.github.io/{{repo-name}}/">Read the documentation (github pages)</a></b> :eyes:
+  Password authentication service based on OpenAuth
   <br />
 </div>
 
 <div align="center">
 <br />
 
-[![npm](https://img.shields.io/npm/v/@eyevinn/{{repo-name}}?style=flat-square)](https://www.npmjs.com/package/@eyevinn/{{repo-name}})
-[![github release](https://img.shields.io/github/v/release/Eyevinn/{{repo-name}}?style=flat-square)](https://github.com/Eyevinn/{{repo-name}}/releases)
-[![license](https://img.shields.io/github/license/eyevinn/{{repo-name}}.svg?style=flat-square)](LICENSE)
-
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/eyevinn/{{repo-name}}/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 [![made with hearth by Eyevinn](https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-Eyevinn-59cbe8.svg?style=flat-square)](https://github.com/eyevinn)
 [![Slack](http://slack.streamingtech.se/badge.svg)](http://slack.streamingtech.se)
 
 </div>
 
-<!-- Add a description of the project here -->
+Password authentication service based on [OpenAuth](https://github.com/openauthjs/openauth) ready to be deployed. Uses a CouchDB database for the user database. Emails are verified using a verification code.
 
 ## Requirements
 
-<!--Add any external project dependencies such as node.js version etc here -->
+- Docker
 
 ## Installation / Usage
 
-<!--Add clear instructions on how to use the project here -->
+```bash
+docker build -t openauth-pwd:local .
+docker run --rm \
+  -e USER_DB_URL=https://<username>:<password>@<couchdb-host>/<user-database> \
+  -e SMTP_MAILER_URL=smtp://<smtp-user>:<smtp-password>@<smtp-host>:<smtp-port> \
+  -p 8000:8000 \
+  openauth-pwd:local
+```
 
-## Development
+Test it out by visiting `http://localhost:8000/.well-known/oauth-authorization-server`.
 
-<!--Add clear instructions on how to start development of the project here -->
+### Fake SMTP server for email verification
+
+For testing you can use a fake SMTP server such as [Ethereal Email](https://ethereal.email).
 
 ## Contributing
 
