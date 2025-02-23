@@ -15,7 +15,7 @@
 
 </div>
 
-Password authentication service based on [OpenAuth](https://github.com/openauthjs/openauth) ready to be deployed. Uses a CouchDB database for the user database.
+Password authentication service based on [OpenAuth](https://github.com/openauthjs/openauth) ready to be deployed. Uses a CouchDB database for the user database. Emails are verified using a verification code.
 
 ## Requirements
 
@@ -27,11 +27,16 @@ Password authentication service based on [OpenAuth](https://github.com/openauthj
 docker build -t openauth-pwd:local .
 docker run --rm \
   -e USER_DB_URL=https://<username>:<password>@<couchdb-host>/<user-database> \
+  -e SMTP_MAILER_URL=smtp://<smtp-user>:<smtp-password>@<smtp-host>:<smtp-port> \
   -p 8000:8000 \
   openauth-pwd:local
 ```
 
-Test it out by visiting `http://localhost:8000/.well-known/oauth-authorization-server`
+Test it out by visiting `http://localhost:8000/.well-known/oauth-authorization-server`.
+
+### Fake SMTP server for email verification
+
+For testing you can use a fake SMTP server such as [Ethereal Email](https://ethereal.email).
 
 ## Contributing
 
