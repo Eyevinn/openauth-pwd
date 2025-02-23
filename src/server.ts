@@ -37,10 +37,11 @@ async function main() {
     async success(ctx, value) {
       let userId = 'anonymous';
       if (value.provider === 'password') {
-        console.log(value.email);
         const user = await userDatabase.findUserByEmail(value.email);
         if (!user) {
           userId = await userDatabase.createUser({ email: value.email });
+        } else {
+          userId = user.userId;
         }
       }
       return ctx.subject('user', { userId });
