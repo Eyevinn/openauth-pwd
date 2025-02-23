@@ -1,7 +1,7 @@
 {
-  "name": "@eyevinn/typescript-nodejs",
+  "name": "openauth-pwd",
   "version": "1.0.0",
-  "description": "The default typescript-nodejs template for eyevinn projects",
+  "description": "Password authentication service based on OpenAuth",
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
@@ -16,12 +16,6 @@
     "node": ">=18.15.0"
   },
   "dependencies": {
-    "@fastify/cors": "^8.2.0",
-    "@fastify/swagger": "^8.3.1",
-    "@fastify/swagger-ui": "^1.5.0",
-    "@fastify/type-provider-typebox": "^3.6.0",
-    "@sinclair/typebox": "^0.29.0",
-    "fastify": "4.23.2",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1"
   },
